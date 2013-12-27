@@ -21,7 +21,7 @@ Die Datei `crontab` zeigt in Zeile 11 wie das Skript direkt in als cron-job alle
 
 ##Skript 1: write_stats_to_db.sh
 
-Das Script führt sqlite 
+Das Script führt die Datenbank-Kommandos mit `sqlite3` aus. 
 
 
 
