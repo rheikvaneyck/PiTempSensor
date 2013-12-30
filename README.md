@@ -3,7 +3,7 @@ PiTempSensor
 
 Protokolliere die CPU-Temperatur des Raspberry Pi per cron job 
 
-###Was ist das?
+###Überblick
 
 Mit einem kleinen Script sollen die Temperaturwerte der CPU auf dem Raspberry Pi überwacht werden. Das Script soll regelmäßig im Abstand von wenigen Minuten die Temperatur auslesen und aufzeichen. Um das Datenhandling zu vereinfachen, werden die Daten in eine SQlite-Datenbank geschrieben. Dadurch können Auswertungen oder eine Auswahl der Daten per SQL-Befehle durchgeführt werden. Außerdem ist es einfacher, die Datensammlung auf einen bestimmten Zeitraum zu begrenzen.    
 
@@ -35,7 +35,7 @@ Die Datei `crontab` zeigt in Zeile 11 wie das Skript `write_stats_to_db.sh` dire
     */5 *   * * *   root    /var/run/write_stats_to_db.sh
 
 
-
+Das Zusammenspiel der Scripte ist in der Abbildung oben dargestellt. 
 
 
 
