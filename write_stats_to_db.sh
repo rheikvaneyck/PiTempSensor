@@ -3,7 +3,6 @@
 # sqlite Datei
 DBDIR=/var/log
 DB=$DBDIR/status.sqlite
-CSV=$DBDIR/status.csv
 
 # Zeitstempel auslesen
 ts=`date +%s`
@@ -25,7 +24,3 @@ sqlite3 $DB 'CREATE TRIGGER IF NOT EXISTS hundret_rows_only AFTER INSERT ON stat
 
 # Werte eintragen
 sqlite3 $DB "INSERT INTO stats (ts,temp) VALUES($ts,$value);"
-
-# Tabelle als csv ausgeben und
-# Zeitstempel in lokale Zeit konvertieren
-sqlite3 -separator ',' -csv  -header $DB "SELECT id AS "ID",datetime(ts, 'unixepoch', 'localtime') AS "Zeit", temp AS "Temperatur" FROM stats;" > $CSV
