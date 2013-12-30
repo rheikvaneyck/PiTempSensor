@@ -13,6 +13,10 @@ Mit einem kleinen Script sollen die Temperaturwerte der CPU auf dem Raspberry Pi
 
 Das Script liest die Temperatur-Werte des Raspberry Pi mit Hilfe von `vcgencmd` aus schreibt sie in eine kleine Datenbank. Die Daten können später als CSV-Datei exportiert werden, um sie z. B. in einer Tabellenkalkulation ein Diagramm draus zu bauen. Mit der Sqlite-Erweiterung `libsqlite3-mod-impexp` können die Daten auch im JSON-Format ausgegeben werden. In diesem Format können Diagramme mit [**jgPlot**](http://www.jqplot.com/index.php) in Webseiten erstellt werden.
 
+<p align="center">
+   <img alt="Temperatur Plot" src="https://dl.dropboxusercontent.com/u/40629133/TempPlot.PNG"/>
+</p>
+
 Damit die Scripte laufen, müssen die Pakete `sqlite3` und `libsqlite3-mod-impexp` installiert sein:
 
     sudo apt-get install sqlite3 libsqlite3-mod-impexp
