@@ -2,10 +2,13 @@
 # Tabelle als csv ausgeben und
 # Zeitstempel in lokale Zeit konvertieren
 
+DBDIR=/var/log
+DB=$DBDIR/status.sqlite
+
 # CSV-Datei 
 if [[ $# -lt 2 ]]; then
-  DIRCSV=/var/log
-  CSV=$DIRCSV/status.csv
+  CSVDIR=/var/log
+  CSV=$CSVDIR/status.csv
 else
   CSV=$2
 fi
