@@ -10,6 +10,7 @@
   <script language="javascript" type="text/javascript" src="js/plugins/jqplot.canvasAxisLabelRenderer.min.js"></script>
   <script language="javascript" type="text/javascript" src="js/plugins/jqplot.categoryAxisRenderer.min.js"></script>
   <script language="javascript" type="text/javascript" src="js/plugins/jqplot.canvasAxisTickRenderer.min.js"></script>
+   <script language="javascript" type="text/javascript" src="js/plugins/jqplot.canvasOverlay.min.js"></script>
 
 
   <title>Charts | jqPlot</title>
@@ -23,7 +24,7 @@ $(document).ready(function(){
   // The options argument isn't used in this renderer.
   var ajaxDataRenderer = function(url, plot, options) {
     var ret = null;
-    $.ajax({
+    var jqXHR = $.ajax({
       // have to use synchronous here, else the function
       // will return before the data is fetched
       async: false,
@@ -37,8 +38,8 @@ $(document).ready(function(){
   };
  
   // The url for our json data
-  var jsonurl = "data/status.json";
- 
+  var jsonurl = "./data/status.json";
+
   // passing in the url string as the jqPlot data argument is a handy
   // shortcut for our renderer.  You could also have used the
   // "dataRendererOptions" option to pass in the url.
@@ -51,14 +52,16 @@ $(document).ready(function(){
         linePattern: 'solid',
         rendererOptions: {
           smooth: true
-        }
+        },
     },
-    title: 'CPU Temperature',
+    title: 'CPU Temperatur',
     axes:{
       xaxis:{
         renderer: $.jqplot.DateAxisRenderer,
-        tickOptions:{formatString:'%H:%M'},
-        min:"December 30, 2013 7:55AM", 
+        tickOptions:{
+          formatString:'%d. %b %H:%M',
+        },
+        min:"December 30, 2013 7:50AM", 
         tickInterval:'10 minutes'
       },
       yaxis: {
@@ -66,27 +69,63 @@ $(document).ready(function(){
           labelRenderer: $.jqplot.CanvasAxisLabelRenderer
       }
     },
-    series:[{lineWidth:3, markerOptions:{style:'circle'}}]
+    series:[{lineWidth:3, markerOptions:{style:'circle'}, color: '#254779'}],
+    canvasOverlay: {
+      show: true,
+      objects: [
+        {dashedHorizontalLine: {
+            name: 'barney',
+            y: 56,
+            lineWidth: 1,
+            color: 'rgb(255, 0, 0)',
+            shadow: false
+        }}
+      ]
+    }
   });
+
+  var axisname = "xaxis";
+  var ticks = $('div.jqplot-'+axisname).find('div.jqplot-'+axisname +'-tick');
+  for(var i=0;i<ticks.size();i++) {
+    str = $(ticks[i]).html().match(/(\d{2}. \w{3}) (\d{2}:\d{2})/);
+    if (str && i > 0) {
+      if (str[2] == "00:00") {
+        $(ticks[i]).html("     " + str[1]);
+      } else {
+        $(ticks[i]).html("     " + str[2]);
+      }
+    } 
+  };
 });
 </script>
 
 
 </script>
 <style type="text/css">
+body {
+  margin: 0px;
+  padding: 0px;
+}
 #header {
-  height: 30px;
-  width: 900px;
+  height: 40px;
+  /* width: 902px; */
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 10px;
-  background-color: #a0a0d0;
-  padding-top: 5px;
+  background: #254779 url(images/header-nav-bg.png) repeat-x scroll 0 0;
+  border-top: 1px solid #436eaa;
+  border-bottom: 1px solid #1d3a63;
+  box-shadow: 0 4px 4px -4px rgba(0,0,0,0.5);
+  -moz-box-shadow: 0 4px 4px -4px rgba(0,0,0,0.5);
+  -webkit-box-shadow: 0 4px 4px -4px rgba(0,0,0,0.5);
+  padding: 0px;
 }
 #header p {
-  margin: 0px;
-  padding: 0px;
+  margin-top: 0px ;
+  padding: 10px 0px 0px 20px;
   font-family: sans-serif;
+  font-size: small;
+  font-weight: bold;
   color: white;
 }
 #main {
@@ -104,7 +143,7 @@ $(document).ready(function(){
 </head>
 <body>
   <div id="header">
-    <p align="center">Raspberry Pi Temperature</p>
+    <p>Raspberry Pi Temperature</p>
   </div>
   <div id="main">
     <div id="chart1"></div>
