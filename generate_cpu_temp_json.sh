@@ -29,4 +29,5 @@ fi
 echo "[[" > $JSON
 # Die Tabelle stats enthält die Spalten: id, ts, temp
 sqlite3 -separator ',' $DB "SELECT (ts * 1000),temp FROM stats;" | sed 's/^/[/' | sed 's/$/],/' >> $JSON
+printf 's/,$//\nw\nq\n' | ed -s $JSON
 echo "]]" >> $JSON
