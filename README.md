@@ -17,9 +17,9 @@ Das Script liest die Temperatur-Werte des Raspberry Pi mit Hilfe von `vcgencmd` 
    <img alt="Temperatur Plot" src="https://dl.dropboxusercontent.com/u/40629133/TempPlot.PNG"/>
 </p>
 
-Damit die Scripte laufen, müssen die Pakete `sqlite3` und `libsqlite3-mod-impexp` installiert sein:
+Damit die Scripte laufen, muss das Paket `sqlite3` installiert sein:
 
-    sudo apt-get install sqlite3 libsqlite3-mod-impexp
+    sudo apt-get install sqlite3
 
 In diesem Repository sind die Scripte enthalten, mit denen die Daten ausgelesen, in die sqlite-Datenbank geschrieben und zur Weiterverarbeitung in verschiedene Formate exportiert werden können. 
 
@@ -31,6 +31,7 @@ Scriptname                 |  Erläuterung
 ---------------------------|------------------------------------------------------------------
 write_stats_to_db.sh       |  Liest die CPU-Temperatur aus und schreibt sie in eine SQLite-DB
 generate_cpu_temp_csv.sh   |  Exportiert die Daten aus der SQLite-DB in eine CSV-Datei
+generate_cpu_temp_json.sh  |  Exportiert die Daten aus der SQLite-DB in eine JSON-Datei
 crontab                    |  Enthält beispielhaft einen Eintrag für die Abfrage alle 5 Minuten
 
 
