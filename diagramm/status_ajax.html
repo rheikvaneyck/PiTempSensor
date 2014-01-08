@@ -61,15 +61,14 @@ $(document).ready(function(){
         tickOptions:{
           formatString:'%d. %b %H:%M',
         },
-        min:"December 30, 2013 7:50AM", 
-        tickInterval:'10 minutes'
+        // tickInterval:'10 minutes'
       },
       yaxis: {
           label: 'Temperature (C)',
           labelRenderer: $.jqplot.CanvasAxisLabelRenderer
       }
     },
-    series:[{lineWidth:3, markerOptions:{style:'circle'}, color: '#254779'}],
+    series:[{lineWidth: 1, markerOptions:{show: false}, color: '#254779'}],
     canvasOverlay: {
       show: true,
       objects: [

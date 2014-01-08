@@ -2,21 +2,27 @@
 # Tabelle als csv ausgeben und
 # Zeitstempel in lokale Zeit konvertieren
 
-DBDIR=/var/log
-DB=$DBDIR/status.sqlite
+while getopts d:o:h opt
+do
+  case $opt in 
+    d) DB="${OPTARG}";;
+    o) CSV="${OPTARG}";;
+    h) echo "usage: $0 [-d database_file] [-c csv_file]"
+	exit 0;;
+    ?) echo "usage: $0 [-d database_file] [-c csv_file]"
+      exit 1;;
+  esac
+done
 
 # CSV-Datei 
-if [[ $# -lt 2 ]]; then
-  CSVDIR=/var/log
-  CSV=$CSVDIR/status.csv
-else
-  CSV=$2
-fi
+[ -z "$CSV" ] &&  CSV=/var/log/status.csv
+# DB-Datei 
+[ -z "$DB" ] &&  DB=/var/log/status.sqlite
 
-echo "Lese Daten von $CSV" 
+echo "Lese Daten von $DB" 
   
-if [ ! -f "$2" ]; then
-    echo "Kann die Datenbank $2 nicht finden"
+if [ ! -f "$DB" ]; then
+    echo "Kann die Datenbank $DB nicht finden"
     exit
 fi
 
