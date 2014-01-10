@@ -10,11 +10,14 @@
   <script language="javascript" type="text/javascript" src="js/plugins/jqplot.canvasAxisLabelRenderer.min.js"></script>
   <script language="javascript" type="text/javascript" src="js/plugins/jqplot.categoryAxisRenderer.min.js"></script>
   <script language="javascript" type="text/javascript" src="js/plugins/jqplot.canvasAxisTickRenderer.min.js"></script>
+  <script type="text/javascript" src="js/plugins/jqplot.cursor.min.js"></script>
+  <script type="text/javascript" src="js/plugins/jqplot.highlighter.min.js"></script>
    <script language="javascript" type="text/javascript" src="js/plugins/jqplot.canvasOverlay.min.js"></script>
 
 
   <title>Charts | jqPlot</title>
   <link rel="stylesheet" type="text/css" href="css/jquery.jqplot.min.css" />
+  <link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
 </script>
 <script class="code" type="text/javascript">
 
@@ -54,21 +57,48 @@ $(document).ready(function(){
           smooth: true
         },
     },
+    axesDefaults: {
+      numberTicks: 5,
+      tickOptions: {
+        mark: 'inside',    // Where to put the tick mark on the axis
+                           // 'outside', 'inside' or 'cross',
+      }
+    },
+    grid: {
+      background: 'rgba(57,57,57,0.0)',      // CSS color spec for background color of grid.
+      gridLineColor: '#666666',
+      drawBorder: false,
+      shadow: false               // draw a shadow for grid.
+    }, 
+    cursor: {
+        show: true,
+        showTooltip:false,
+        zoom:true
+    }, 
     title: 'CPU Temperatur',
     axes:{
       xaxis:{
         renderer: $.jqplot.DateAxisRenderer,
         tickOptions:{
           formatString:'%d. %b %H:%M',
+          showGridline: false,
         },
         // tickInterval:'10 minutes'
       },
       yaxis: {
           label: 'Temperature (C)',
-          labelRenderer: $.jqplot.CanvasAxisLabelRenderer
+          labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
+          tickOptions: {
+            showGridline: true,
+          }
       }
     },
-    series:[{lineWidth: 1, markerOptions:{show: false}, color: '#254779'}],
+    highlighter: {
+      show: true,
+      sizeAdjust: 1,
+      tooltipOffset: 9
+    },
+    series:[{lineWidth: 1, markerOptions:{show: false}, color: 'rgb(211, 235, 59)'}],
     canvasOverlay: {
       show: true,
       objects: [
@@ -95,6 +125,9 @@ $(document).ready(function(){
       }
     } 
   };
+
+  $('.jqplot-highlighter-tooltip').addClass('ui-corner-all');
+  $('.button-reset').click(function() { plot1.resetZoom() });
 });
 </script>
 
@@ -104,6 +137,7 @@ $(document).ready(function(){
 body {
   margin: 0px;
   padding: 0px;
+  background-color: #53616E;
 }
 #header {
   height: 40px;
@@ -132,11 +166,27 @@ body {
   width: 900px;
   height: 500px;
   margin: auto;
+  /* background-color: #BAC0C5; */
+  background: none repeat scroll 0% 0% rgb(57, 57, 57);
 }
 #chart1 {
   height:400px;
   width:800px;
   margin: auto;
+}
+.jqplot-target {
+    margin: 20px;
+    height: 340px;
+    width: 600px;
+    color: rgb(221, 221, 221);
+}
+.jqplot-highlighter-tooltip {
+    background-color: rgba(57, 57, 57, 0.9);
+    padding: 7px;
+    color: rgb(221, 221, 221);
+}
+.button-reset {
+    margin: 30px 30px 30px 90px;
 }
 </style>
 </head>
@@ -145,7 +195,8 @@ body {
     <p>Raspberry Pi Temperature</p>
   </div>
   <div id="main">
-    <div id="chart1"></div>
+    <div id="chart1" class="jqplot-target" ></div>
+    <button class="button-reset">Reset Zoom</button>
   </div>
 </body>
 </html>
