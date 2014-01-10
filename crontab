@@ -1,2 +1,2 @@
-# m h dom mon dow user  command
-*/5 *   * * *   root    /home/pi/bin/write_stats_to_db.sh
+# m h dom mon dow command
+*/5 *   * * *   ~/PiTempSensor/bin/logtemp
