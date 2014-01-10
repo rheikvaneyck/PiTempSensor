@@ -17,14 +17,14 @@ done
 # CSV-Datei 
 if [ -z "$CSV" ]; then
   FDIR=`dirname $0`
-  LOGDIR="$FDIR/log"
+  LOGDIR="$FDIR/../log"
   [ ! -d "$LOGDIR" ] && mkdir "$LOGDIR"  
   CSV="$LOGDIR/status.csv"
 else
   LOGDIR=`dirname "$CSV"`
 fi
 
-if [ ! -d "$LOGDIR"]; then 
+if [ ! -d "$LOGDIR" ]; then 
   echo "Kann Verzeichnis $LOGDIR nicht finden"
   exit 1
 fi 
@@ -32,7 +32,8 @@ fi
 
 # DB-Datei 
 if [ -z "$DB" ]; then
-  LOGDIR=`dirname $0`
+  FDIR=`dirname $0`
+  LOGDIR="$FDIR/../log"
   DB="$LOGDIR/status.sqlite"
 fi
 
