@@ -1,0 +1,5 @@
+#!/bin/bash
+DIR=`dirname $0`
+
+$DIR/write_stats_to_db.sh
+$DIR/generate_cpu_temp_json.sh

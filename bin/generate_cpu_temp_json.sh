@@ -15,10 +15,25 @@ do
 done
 
 # JSON-Datei 
-[ -z "$JSON" ] &&  JSON=/var/log/status.json
-# DB-Datei 
-[ -z "$DB" ] &&  DB=/var/log/status.sqlite
+if [ -z "$JSON" ]; then
+  FDIR=`dirname $0`
+  LOGDIR="$FDIR/log"
+  [ ! -d "$LOGDIR" ] && mkdir "$LOGDIR"  
+  JSON="$LOGDIR/status.json"
+else
+  LOGDIR=`dirname "$JSON"`
+fi
 
+if [ ! -d "$LOGDIR"]; then 
+  echo "Kann Verzeichnis $LOGDIR nicht finden"
+  exit 1
+fi
+ 
+# DB-Datei 
+if [ -z "$DB" ]; then
+  LOGDIR=`dirname $0`
+  DB="$LOGDIR/status.sqlite"
+fi
 echo "Lese Daten von $DB" 
   
 if [ ! -f "$DB" ]; then

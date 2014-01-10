@@ -1,10 +1,12 @@
 #!/bin/bash
 #
 
-while getopts d: opt
+while getopts d:h opt
 do
   case $opt in 
     d) DB="${OPTARG}";;
+    h) echo "usage: $0 [-d database_file] [-c csv_file]"
+     exit 0;;
     ?) echo "usage: $0 [-d database_file]"
       exit 1;;
   esac
@@ -12,7 +14,7 @@ done
 
 
 # sqlite Datei
-[ -z "$DB" ] && DB=/var/log/status.sqlite
+[ -z "$DB" ] && DB="~/log/status.sqlite"
 
 # Zeitstempel auslesen
 ts=`date +%s`

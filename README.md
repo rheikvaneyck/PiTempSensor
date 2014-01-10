@@ -25,19 +25,18 @@ In diesem Repository sind die Scripte enthalten, mit denen die Daten ausgelesen,
 
 ###Die Skripte
 
-Hier sind zwei Scripte enthalten:
+Im Verzeichnis `bin/` sind drei Scripte enthalten:
 
 Scriptname                 |  Erläuterung
 ---------------------------|------------------------------------------------------------------
 write_stats_to_db.sh       |  Liest die CPU-Temperatur aus und schreibt sie in eine SQLite-DB
 generate_cpu_temp_csv.sh   |  Exportiert die Daten aus der SQLite-DB in eine CSV-Datei
 generate_cpu_temp_json.sh  |  Exportiert die Daten aus der SQLite-DB in eine JSON-Datei
-crontab                    |  Enthält beispielhaft einen Eintrag für die Abfrage alle 5 Minuten
 
 
-Die Datei `crontab` zeigt in Zeile 11 wie das Skript `write_stats_to_db.sh` direkt als cron-job alle 5 Minuten ausgeführt wird:
+Die Datei `crontab` zeigt in Zeile 2 wie das Skript `logtemp` direkt als cron-job alle 5 Minuten ausgeführt wird:
 
-    */5 *   * * *   root    /var/run/write_stats_to_db.sh
+    */5 *   * * *   root    ~/bin/logtemp
 
 
 Das Zusammenspiel der Scripte ist in der Abbildung oben dargestellt. 
