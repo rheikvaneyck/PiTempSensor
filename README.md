@@ -45,7 +45,7 @@ Ein einfacher Web-Server zum Abrufen der Daten mit einem Browser ist mit einem p
 
     nohup python -m SimpleHTTPServer > /dev/null 2>&1 &
 
-Der Web-Server ist dann über den hostnamen auf Port 8000 erreichbar, wenn Ihr eine Fritz!Box habt - z.B. http://pi3:8000/ - oder über die IP-Adresse des Raspberry Pi, z.B. http://192.168.0.100:8000/
+Der Web-Server ist dann über den hostnamen auf Port 8000 erreichbar, wenn Ihr eine Fritz!Box habt - z.B. [http://pi3:8000/](http://pi3:8000/) - oder über die IP-Adresse des Raspberry Pi, z.B. http://192.168.0.100:8000/
 
 Das Zusammenspiel der Scripte ist in der Abbildung oben dargestellt. 
 
