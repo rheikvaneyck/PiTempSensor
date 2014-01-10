@@ -14,7 +14,11 @@ done
 
 
 # sqlite Datei
-[ -z "$DB" ] && DB="~/log/status.sqlite"
+# DB-Datei 
+if [ -z "$DB" ]; then
+  LOGDIR=`dirname $0`
+  DB="$LOGDIR/status.sqlite"
+fi
 
 # Zeitstempel auslesen
 ts=`date +%s`
