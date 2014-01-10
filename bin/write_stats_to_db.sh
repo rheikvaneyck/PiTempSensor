@@ -16,8 +16,15 @@ done
 # sqlite Datei
 # DB-Datei 
 if [ -z "$DB" ]; then
-  LOGDIR=`dirname $0`
+  FDIR=`dirname $0`
+  LOGDIR="$FDIR/../log"
+  [ ! -d "$LOGDIR" ] && mkdir "$LOGDIR"  
   DB="$LOGDIR/status.sqlite"
+fi
+
+if [ ! -d "$LOGDIR"]; then 
+  echo "Kann Verzeichnis $LOGDIR nicht finden"
+  exit 1
 fi
 
 # Zeitstempel auslesen
