@@ -22,7 +22,7 @@ if [ -z "$DB" ]; then
   DB="$LOGDIR/status.sqlite"
 fi
 
-if [ ! -d "$LOGDIR"]; then 
+if [ ! -d "$LOGDIR" ]; then 
   echo "Kann Verzeichnis $LOGDIR nicht finden"
   exit 1
 fi
