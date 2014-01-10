@@ -39,13 +39,13 @@ Die Datei `crontab` enthält den Eintrag für einen cron-job, um das Skript `log
 
     */5 * * * *   ~/PiTempSensor/bin/logtemp
 
-Dieser Eintrag wird mit `crontab -u pi -e` in die crontab-Datei des Benutzers pi eingetragen. 
+Dieser Eintrag wird mit `crontab -u pi -e` in die crontab-Datei des Benutzers pi eingetragen. Der Pfad zum Script muss natürlich so angepasst werden, dass er zum Script zeigt. 
 
 Ein einfacher Web-Server zum Abrufen der Daten mit einem Browser ist mit einem python-Aufruf möglich:
 
     nohup python -m SimpleHTTPServer > /dev/null 2>&1 &
 
-Der Web-Server ist dann über den hostnamen auf Port 8000 erreichbar, wenn Ihr eine Fritz!Box habt:  http://raspberrypi:8000 oder über die IP-Adresse des Raspberry Pi, z.B. http://192.168.0.100:8000 
+Der Web-Server ist dann über den hostnamen auf Port 8000 erreichbar, wenn Ihr eine Fritz!Box habt - z.B. http://pi3:8000/ - oder über die IP-Adresse des Raspberry Pi, z.B. http://192.168.0.100:8000/
 
 Das Zusammenspiel der Scripte ist in der Abbildung oben dargestellt. 
 
