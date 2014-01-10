@@ -32,12 +32,14 @@ Scriptname                 |  Erläuterung
 write_stats_to_db.sh       |  Liest die CPU-Temperatur aus und schreibt sie in eine SQLite-DB
 generate_cpu_temp_csv.sh   |  Exportiert die Daten aus der SQLite-DB in eine CSV-Datei
 generate_cpu_temp_json.sh  |  Exportiert die Daten aus der SQLite-DB in eine JSON-Datei
+logTemp                    |  fasst die scripte zum Speichern und Exportieren für den cron-job zusammen.
 
 
-Die Datei `crontab` zeigt in Zeile 2 wie das Skript `logtemp` direkt als cron-job alle 5 Minuten ausgeführt wird:
+Die Datei `crontab` enthält den Eintrag für einen cron-job, um das Skript `logtemp` alle 5 Minuten auszuführen:
 
     */5 *   * * *   root    ~/bin/logtemp
 
+Dieser Eintrag wird mit `crontab -u pi -e` in die crontab-Datei des Benutzers pi eingetragen. 
 
 Das Zusammenspiel der Scripte ist in der Abbildung oben dargestellt. 
 
