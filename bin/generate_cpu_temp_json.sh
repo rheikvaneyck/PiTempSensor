@@ -31,8 +31,9 @@ fi
 
 # DB-Datei 
 if [ -z "$DB" ]; then
-  LOGDIR=`dirname $0`
-  DB="$LOGDIR/../status.sqlite"
+  FDIR=`dirname $0`
+  LOGDIR="$FDIR/../log"
+  DB="$LOGDIR/status.sqlite"
 fi
 echo "Lese Daten von $DB" 
   
