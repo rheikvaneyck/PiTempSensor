@@ -11,7 +11,7 @@ Mit einem kleinen Script sollen die Temperaturwerte der CPU auf dem Raspberry Pi
    <img alt="Übersicht" src="https://dl.dropboxusercontent.com/u/40629133/Status.png"/>
 </p>
 
-Das Script liest die Temperatur-Werte des Raspberry Pi mit Hilfe von `vcgencmd` aus schreibt sie in eine kleine Datenbank. Die Daten können später als CSV-Datei exportiert werden, um sie z. B. in einer Tabellenkalkulation ein Diagramm draus zu bauen. Mit der Sqlite-Erweiterung `libsqlite3-mod-impexp` können die Daten auch im JSON-Format ausgegeben werden. In diesem Format können Diagramme mit [**jgPlot**](http://www.jqplot.com/index.php) in Webseiten erstellt werden:
+Das Script liest die Temperatur-Werte des Raspberry Pi mit Hilfe von `vcgencmd` aus schreibt sie in eine kleine Datenbank. Die Daten können später als CSV-Datei exportiert werden, um sie z. B. in einer Tabellenkalkulation ein Diagramm draus zu bauen. Mit dem Script `generate_cpu_temp_json.sh` können die Daten auch im JSON-Format ausgegeben werden. In diesem Format können Diagramme mit [**jgPlot**](http://www.jqplot.com/index.php) in html-Seiten eingebettet  werden:
 
 <p align="center">
    <img alt="Temperatur Plot" src="https://dl.dropboxusercontent.com/u/40629133/LogTemp.png"/>
@@ -25,7 +25,7 @@ In diesem Repository sind die Scripte enthalten, mit denen die Daten ausgelesen,
 
 ###Die Skripte
 
-Im Verzeichnis `bin/` sind drei Scripte enthalten:
+Im Verzeichnis `bin/` sind vier Scripte enthalten:
 
 Scriptname                 |  Erläuterung
 ---------------------------|------------------------------------------------------------------
@@ -45,7 +45,7 @@ Ein einfacher Web-Server zum Abrufen der Daten mit einem Browser ist mit einem p
 
     nohup python -m SimpleHTTPServer > /dev/null 2>&1 &
 
-Der Web-Server ist dann über den hostnamen auf Port 8000 erreichbar, wenn Ihr eine Fritz!Box habt - z.B. [http://pi3:8000/](http://pi3:8000/) - oder über die IP-Adresse des Raspberry Pi, z.B. http://192.168.0.100:8000/
+Der Web-Server ist dann über den hostnamen auf Port 8000 erreichbar, wenn Ihr eine Fritz!Box habt - z.B. [http://pi:8000/](http://pi:8000/) - oder über die IP-Adresse des Raspberry Pi, z.B. http://192.168.0.100:8000/
 
 Das Zusammenspiel der Scripte ist in der Abbildung oben dargestellt. 
 
