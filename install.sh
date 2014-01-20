@@ -19,7 +19,7 @@ cp -r "$CURRDIR/js" "$APPDIR"
 cp -r "$CURRDIR/css" "$APPDIR"
 cp "$CURRDIR/status_ajax.html" "$APPDIR"
 
-CRONCMD="$BINDIR/logtemp 2>  $APPDIR/cron_errors > /dev/null"
+CRONCMD="$BINDIR/logtemp 2> $APPDIR/cron_errors > /dev/null"
 CRONJOB="*/5 *   * * *  $CRONCMD"
 
 echo "Richte cronjob ein:"
