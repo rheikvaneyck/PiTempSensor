@@ -5,7 +5,7 @@ while getopts d:h opt
 do
   case $opt in 
     d) DB="${OPTARG}";;
-    h) echo "usage: $0 [-d database_file] [-c csv_file]"
+    h) echo "usage: $0 [-d database_file]"
      exit 0;;
     ?) echo "usage: $0 [-d database_file]"
       exit 1;;
@@ -16,14 +16,13 @@ done
 # sqlite Datei
 # DB-Datei 
 if [ -z "$DB" ]; then
-  FDIR=`dirname $0`
-  LOGDIR="$FDIR/../log"
-  [ ! -d "$LOGDIR" ] && mkdir "$LOGDIR"  
-  DB="$LOGDIR/status.sqlite"
+  DBDIR="~/PiTempSensor/log"
+  [ ! -d "$DBDIR" ] && mkdir -p "$DBDIR"  
+  DB="$DBDIR/status.sqlite"
 fi
 
-if [ ! -d "$LOGDIR" ]; then 
-  echo "Kann Verzeichnis $LOGDIR nicht finden"
+if [ ! -d "$DBDIR" ]; then 
+  echo "Konnte Verzeichnis $DBDIR nicht ertellen"
   exit 1
 fi
 
