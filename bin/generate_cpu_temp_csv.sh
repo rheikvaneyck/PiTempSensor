@@ -16,7 +16,7 @@ done
 
 # CSV-Datei 
 if [ -z "$CSV" ]; then
-  CSVDIR="~/PiTempSensor/log"
+  CSVDIR="$HOME/PiTempSensor/log"
   [ ! -d "$CSVDIR" ] && mkdir "$CSVDIR"  
   CSV="$LOGDIR/status.csv"
 else
@@ -31,7 +31,7 @@ fi
 
 # DB-Datei 
 if [ -z "$DB" ]; then
-  DBDIR="~/PiTempSensor/log"
+  DBDIR="$HOME/PiTempSensor/log"
   DB="$DBDIR/status.sqlite"
 fi
 
