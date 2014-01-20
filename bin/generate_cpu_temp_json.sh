@@ -19,7 +19,7 @@ done
 # Der Dateiname ist status.json
 if [ -z "$JSON" ]; then
   JSONDIR="$HOME/PiTempSensor/log"
-  [ ! -d "$JSONDIR" ] && mkdir "$JSONDIR"  
+  [ ! -d "$JSONDIR" ] && mkdir -p "$JSONDIR"  
   JSON="$JSONDIR/status.json"
 else
   JSONDIR=`dirname "$JSON"`
