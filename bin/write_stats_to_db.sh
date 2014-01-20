@@ -16,7 +16,7 @@ done
 # sqlite Datei
 # DB-Datei 
 if [ -z "$DB" ]; then
-  DBDIR="~/PiTempSensor/log"
+  DBDIR="$HOME/PiTempSensor/log"
   [ ! -d "$DBDIR" ] && mkdir -p "$DBDIR"  
   DB="$DBDIR/status.sqlite"
 fi
