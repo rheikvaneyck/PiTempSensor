@@ -16,25 +16,23 @@ done
 
 # CSV-Datei 
 if [ -z "$CSV" ]; then
-  FDIR=`dirname $0`
-  LOGDIR="$FDIR/../log"
-  [ ! -d "$LOGDIR" ] && mkdir "$LOGDIR"  
+  CSVDIR="~/PiTempSensor/log"
+  [ ! -d "$CSVDIR" ] && mkdir "$CSVDIR"  
   CSV="$LOGDIR/status.csv"
 else
-  LOGDIR=`dirname "$CSV"`
+  CSVDIR=`dirname "$CSV"`
 fi
 
-if [ ! -d "$LOGDIR" ]; then 
-  echo "Kann Verzeichnis $LOGDIR nicht finden"
+if [ ! -d "$CSVDIR" ]; then 
+  echo "Kann Verzeichnis $CSVDIR nicht finden"
   exit 1
 fi 
 
 
 # DB-Datei 
 if [ -z "$DB" ]; then
-  FDIR=`dirname $0`
-  LOGDIR="$FDIR/../log"
-  DB="$LOGDIR/status.sqlite"
+  DBDIR="~/PiTempSensor/log"
+  DB="$DBDIR/status.sqlite"
 fi
 
 echo "Lese Daten von $DB" 
