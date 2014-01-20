@@ -18,7 +18,7 @@ done
 # Die Datei liegt standardmäßig im Benutzerverzeichnis im Ordner 'PiTempSensor/log'
 # Der Dateiname ist status.json
 if [ -z "$JSON" ]; then
-  JSONDIR="~/PiTempSensor/log"
+  JSONDIR="$HOME/PiTempSensor/log"
   [ ! -d "$JSONDIR" ] && mkdir "$JSONDIR"  
   JSON="$JSONDIR/status.json"
 else
