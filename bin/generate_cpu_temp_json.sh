@@ -15,25 +15,27 @@ do
 done
 
 # JSON-Datei 
+# Die Datei liegt standardmäßig im Benutzerverzeichnis im Ordner 'PiTempSensor/log'
+# Der Dateiname ist status.json
 if [ -z "$JSON" ]; then
-  FDIR=`dirname $0`
-  LOGDIR="$FDIR/../log"
-  [ ! -d "$LOGDIR" ] && mkdir "$LOGDIR"  
-  JSON="$LOGDIR/status.json"
+  JSONDIR="~/PiTempSensor/log"
+  [ ! -d "$JSONDIR" ] && mkdir "$JSONDIR"  
+  JSON="$JSONDIR/status.json"
 else
-  LOGDIR=`dirname "$JSON"`
+  JSONDIR=`dirname "$JSON"`
 fi
 
-if [ ! -d "$LOGDIR" ]; then 
-  echo "Kann Verzeichnis $LOGDIR nicht finden"
+if [ ! -d "$JSONDIR" ]; then 
+  echo "Kann Verzeichnis $JSONDIR nicht finden"
   exit 1
 fi
 
 # DB-Datei 
+# Die Datei liegt standardmäßig im Benutzerverzeichnis im Ordner 'PiTempSensor/log'
+# Der Dateiname ist status.sqlite
 if [ -z "$DB" ]; then
-  FDIR=`dirname $0`
-  LOGDIR="$FDIR/../log"
-  DB="$LOGDIR/status.sqlite"
+  DBDIR="~/PiTempSensor/log"
+  DB="$DBDIR/status.sqlite"
 fi
 echo "Lese Daten von $DB" 
   
@@ -44,6 +46,8 @@ fi
 
 echo "[[" > $JSON
 # Die Tabelle stats enthält die Spalten: id, ts, temp
+# Für die Ausgabe wird die Zeit in Millisekunden umgerechnet, damit sie von 
+# javascript-Funktionen direkt geparst werden kann.
 sqlite3 -separator ',' $DB "SELECT (ts * 1000),temp FROM stats;" | sed 's/^/[/' | sed 's/$/],/' >> $JSON
 printf 's/,$//\nw\nq\n' | ed -s $JSON
 echo "]]" >> $JSON
