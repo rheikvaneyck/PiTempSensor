@@ -1,7 +1,7 @@
 #!/bin/bash
 # Install the scripts with default configuration 
 
-APPDIR="~/PiTempSensor"
+APPDIR="$HOME/PiTempSensor"
 BINDIR="$APPDIR/bin"
 LOGDIR="$APPDIR/log"
 
