@@ -9,6 +9,7 @@ LOGDIR="$APPDIR/log"
 [ ! -d "$LOGDIR" ] && mkdir -p "$LOGDIR"
 
 if [ ! -d "$BINDIR" ];
+then
   echo "Verzeichnis $BINDIR konnte nicht erstellt und Skripte nicht installiert werden"
   exit 1
 fi
