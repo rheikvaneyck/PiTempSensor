@@ -8,7 +8,7 @@ Protokolliere die CPU-Temperatur des Raspberry Pi per cron job
 Mit einem kleinen Script sollen die Temperaturwerte der CPU auf dem Raspberry Pi überwacht werden. Das Script soll regelmäßig im Abstand von wenigen Minuten die Temperatur auslesen und aufzeichen. Um das Datenhandling zu vereinfachen, werden die Daten in eine SQlite-Datenbank geschrieben. Dadurch können Auswertungen oder eine Auswahl der Daten per SQL-Befehle durchgeführt werden. Außerdem ist es einfacher, die Datensammlung auf einen bestimmten Zeitraum zu begrenzen.    
 
 <p align="center">
-   <img alt="Übersicht" src="https://dl.dropboxusercontent.com/u/40629133/Status.png"/>
+   <img alt="Übersicht" src="https://dl.dropboxusercontent.com/u/40629133/PiTempSensor.png"/>
 </p>
 
 Das Script liest die Temperatur-Werte des Raspberry Pi mit Hilfe von `vcgencmd` aus schreibt sie in eine kleine Datenbank. Die Daten können später als CSV-Datei exportiert werden, um sie z. B. in einer Tabellenkalkulation ein Diagramm draus zu bauen. Mit dem Script `generate_cpu_temp_json.sh` können die Daten auch im JSON-Format ausgegeben werden. In diesem Format können Diagramme mit [**jgPlot**](http://www.jqplot.com/index.php) in html-Seiten eingebettet  werden:
