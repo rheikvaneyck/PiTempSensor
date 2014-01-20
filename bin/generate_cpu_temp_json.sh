@@ -34,7 +34,7 @@ fi
 # Die Datei liegt standardmäßig im Benutzerverzeichnis im Ordner 'PiTempSensor/log'
 # Der Dateiname ist status.sqlite
 if [ -z "$DB" ]; then
-  DBDIR="~/PiTempSensor/log"
+  DBDIR="$HOME/PiTempSensor/log"
   DB="$DBDIR/status.sqlite"
 fi
 echo "Lese Daten von $DB" 
